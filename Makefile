@@ -1,7 +1,11 @@
-SDK_DIR=./sdk
+DIR=$(shell pwd)
+
+SDK_DIR=$(DIR)/sdk
 SDK_EXEC=$(SDK_DIR)/local/bin/
 PYTHON=$(SDK_EXEC)/python
 EASY_INSTALL=$(SDK_EXEC)/easy_install
+BIN_DIR=$(DIR)/bin
+
 DEPS=beautifulsoup4 lxml scrapy
 
 all: deps compile
@@ -15,7 +19,7 @@ deps:
 	done
 
 compile: 
-	python setup.py install --install-lib bin
+	$(PYTHON) setup.py install --install-lib bin
 
 clean-all: clean clean-sdk
 
@@ -26,7 +30,7 @@ clean-sdk:
 	rm -rf sdk
 
 run:
-	PATH=./sdk:$(PATH) $(PYTHON) -i ./bin/crawler
+	PATH=$(SDK_DIR):$(PATH) $(PYTHON) -i $(BIN_DIR)/crawler
 
 .PHONY: all prepare clean-sdk compile clean clean-all deps run
 

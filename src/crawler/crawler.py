@@ -15,14 +15,17 @@ else:
 			file = "./requests.txt"
 		else:
 			raise "no requests.txt specified"
- 
+
 with open(file) as f:
     request_list = f.readlines()
+
+#TODO: Дать возможность конфигурировать User-Agent
+headers = {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0'}
 
 f = codecs.open('index.html', mode='w', encoding='utf-8')
 
 for req in request_list:
-	result = requests.get(req)
+	result = requests.get(req, headers = headers)
 	parsed_uri = urlparse(req)
 	domain = '{uri.scheme}://{uri.netloc}/'.format(uri=parsed_uri)
 	page1 = re.sub("src=\"", "src=\"" + domain, result.text)
