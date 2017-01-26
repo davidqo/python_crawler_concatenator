@@ -2,7 +2,7 @@ SDK_DIR=./sdk
 SDK_EXEC=$(SDK_DIR)/local/bin/
 PYTHON=$(SDK_EXEC)/python
 EASY_INSTALL=$(SDK_EXEC)/easy_install
-DEPS=beautifulsoup4 lxml scrapy selenium
+DEPS=beautifulsoup4 lxml scrapy
 
 all: deps compile
 

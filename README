@@ -1,3 +1,7 @@
 Build and execute.
 
 make prepare deps compile run
+
+How to use.
+
+Add your custom requests to requests.txt
