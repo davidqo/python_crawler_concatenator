@@ -22,7 +22,7 @@ with open(file) as f:
 #TODO: Дать возможность конфигурировать User-Agent
 headers = {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0'}
 
-f = codecs.open('index.html', mode='w', encoding='utf-8')
+f = codecs.open('index_new.html', mode='w', encoding='utf-8')
 
 for req in request_list:
 	result = requests.get(req, headers = headers)
@@ -33,4 +33,3 @@ for req in request_list:
 	f.write(page2)
 
 f.close()
-
