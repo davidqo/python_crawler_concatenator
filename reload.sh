@@ -34,9 +34,9 @@ else
 	# Если файл изменился то перезагружаем его в браузере.
 	# Плагин firefox remote-control должен быть установлен
         
-	diff <(prepare_to_diff "index.html") <(prepare_to_diff "index_new.html")
-	RESULT=`diff index.html index_new.html`
+	RESULT=`diff <(prepare_to_diff "index.html") <(prepare_to_diff "index_new.html")`
 	if [ ! -z "$RESULT" ]; then 
+		logger "index.html changed: $RESULT"
 		cp index_new.html index.html
 		echo reload | nc 127.0.0.1 32000 
 	fi
