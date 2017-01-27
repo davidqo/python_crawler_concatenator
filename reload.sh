@@ -10,9 +10,8 @@ function prepare_to_diff() {
         do
                 #Экранируем в паттерне / так как он используется
                 #как разделитель в sed
-                ESCAPED1=$(sed -e "s/\//\\\\\//g" <<< $line)
-                printf -v ESCAPED2 "%q" "$ESCAPED1"
-                FILE_CONTENTS=$(echo "$FILE_CONTENTS" | sed "s/$ESCAPED2//g")
+                ESCAPED=$(sed -e "s/\//\\\\\//g" <<< $line)
+                FILE_CONTENTS=$(echo "$FILE_CONTENTS" | sed "s/$ESCAPED//g")
         done < ignore
 
         echo "$FILE_CONTENTS"

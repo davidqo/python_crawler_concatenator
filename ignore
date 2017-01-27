@@ -1,1 +1,2 @@
-
+authenticity_token.*
+csrf-token.*
